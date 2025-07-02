@@ -3,143 +3,745 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad Saad Amin's CV</title>
+    <title>Muhammad Saad Amin - Portfolio</title>
     <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; }
-        h1, h2, h3 { color: #333; }
-        .contact-info, .education, .work-experience, .skills, .projects, .publications, .references { margin-bottom: 20px; }
-        ul { list-style-type: none; padding: 0; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #667eea;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile menu */
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .section-white {
+            background: white;
+        }
+
+        .section-gray {
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        /* Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e9ecef;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .card h3 {
+            color: #333;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Skills */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .skill-tag {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-align: center;
+            font-weight: 500;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            transform: scale(1.05);
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background: white;
+            border: 4px solid #667eea;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background: white;
+            position: relative;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Contact */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item::before {
+                left: 60px;
+                border: medium solid white;
+                border-width: 10px 10px 10px 0;
+                border-color: transparent white transparent transparent;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0%;
+            }
+
+            .timeline-item::after {
+                left: 21px;
+            }
+
+            .timeline-item:nth-child(even)::after {
+                left: 21px;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">Muhammad Saad Amin</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
 
-<h1>Muhammad Saad Amin</h1>
-<div class="contact-info">
-    <p><strong>Email:</strong> saadamin2k13@gmail.com</p>
-    <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/muhammad-saad-amin-3434a5143">linkedin.com/in/muhammad-saad-amin-3434a5143</a></p>
-    <p><strong>ORCID:</strong> <a href="https://orcid.org/0000-0002-7002-9373">https://orcid.org/0000-0002-7002-9373</a></p>
-    <p><strong>Google Scholar:</strong> <a href="https://scholar.google.com.hk/citations?user=-RLHOT0AAAAJ">Google Scholar Profile</a></p>
-    <p><strong>Scopus:</strong> <a href="https://www.scopus.com/authid/detail.uri?authorId=57221928036">Scopus Profile</a></p>
-    <p><strong>Website:</strong> <a href="https://computerengineer2k.wixsite.com/know-saad-amin">https://computerengineer2k.wixsite.com/know-saad-amin</a></p>
-    <p><strong>Address:</strong> Via Puccini, 10154 Turin, Italy</p>
-</div>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Muhammad Saad Amin</h1>
+            <p>Postdoctoral Researcher in Computer Science</p>
+            <p>Specializing in Natural Language Processing & Semantic Parsing</p>
+            <a href="#about" class="cta-button">Explore My Work</a>
+        </div>
+    </section>
 
-<h2>Education</h2>
-<div class="education">
-    <h3>Postdoctoral Researcher</h3>
-    <p>The University of Turin (01/07/2024 – Current) | Turin, Italy | <a href="https://www.unito.it/">Website</a></p>
+    <!-- About Section -->
+    <section id="about" class="section-white">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="cards-grid">
+                <div class="card fade-in-up">
+                    <div class="card-header">
+                        <div class="card-icon">🎓</div>
+                        <div>
+                            <h3>Current Position</h3>
+                            <div class="card-meta">University of Turin</div>
+                        </div>
+                    </div>
+                    <p>Postdoctoral Researcher focusing on improving generalization and robustness of language models through innovative semantic parsing techniques.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-header">
+                        <div class="card-icon">🔬</div>
+                        <div>
+                            <h3>Research Focus</h3>
+                            <div class="card-meta">NLP & AI</div>
+                        </div>
+                    </div>
+                    <p>Specializing in multi-lingual neural semantic parsing, text generation, and data augmentation for formal meaning representation.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-header">
+                        <div class="card-icon">👨‍🏫</div>
+                        <div>
+                            <h3>Teaching Experience</h3>
+                            <div class="card-meta">Multiple Universities</div>
+                        </div>
+                    </div>
+                    <p>Extensive experience in teaching computer science fundamentals, algorithms, and advanced programming concepts across various institutions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <h3>PhD Scholar</h3>
-    <p>University of Turin (01/11/2021 – 30/06/2024) | Turin, Italy | Field(s) of study: Computer Science | Thesis: Improving Generalization and Robustness of Language Models with Multi-Faceted DRS Transformations in Multi-Lingual Neural Semantic Parsing and Text Generation</p>
+    <!-- Education Section -->
+    <section id="education" class="section-gray">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>PhD in Computer Science</h3>
+                        <div class="card-meta">University of Turin, Italy (2021-2024)</div>
+                        <p><strong>Thesis:</strong> Improving Generalization and Robustness of Language Models with Multi-Faceted DRS Transformations in Multi-Lingual Neural Semantic Parsing and Text Generation</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Master of Science in Computer Engineering</h3>
+                        <div class="card-meta">University of Lahore, Pakistan (2018-2020)</div>
+                        <p><strong>Thesis:</strong> Sign Language Recognition using Machine Learning</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Bachelor of Science in Computer Engineering</h3>
+                        <div class="card-meta">UET Taxila, Pakistan (2013-2017)</div>
+                        <p>Foundation in computer engineering principles and software development</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <h3>Master of Science in Computer Engineering</h3>
-    <p>The University of Lahore (01/09/2018 – 09/10/2020) | Lahore, Pakistan | Field(s) of study: Computer Engineering | Thesis: Sign Language Recognition using Machine Learning | Address: Lahore, Pakistan | <a href="https://uol.edu.pk/">Website</a></p>
+    <!-- Experience Section -->
+    <section id="experience" class="section-white">
+        <div class="container">
+            <h2 class="section-title">Work Experience</h2>
+            <div class="cards-grid">
+                <div class="card fade-in-up">
+                    <div class="card-header">
+                        <div class="card-icon">🔬</div>
+                        <div>
+                            <h3>Postdoctoral Researcher</h3>
+                            <div class="card-meta">University of Turin (2024 - Current)</div>
+                        </div>
+                    </div>
+                    <p>Leading advanced research in natural language processing and semantic parsing, developing innovative solutions for multi-lingual text generation.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-header">
+                        <div class="card-icon">👨‍🎓</div>
+                        <div>
+                            <h3>PhD Scholar</h3>
+                            <div class="card-meta">University of Turin (2021-2024)</div>
+                        </div>
+                    </div>
+                    <p>Conducted original research, developed scientific models, collaborated on diverse projects, and mentored junior researchers.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-header">
+                        <div class="card-icon">👨‍🏫</div>
+                        <div>
+                            <h3>Lecturer</h3>
+                            <div class="card-meta">University of Sialkot (2020-2021)</div>
+                        </div>
+                    </div>
+                    <p>Delivered lectures, developed curricula, conducted research, and provided comprehensive academic support to students.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <h3>Bachelor of Science in Computer Engineering</h3>
-    <p>University of Engineering & Technology Taxila (10/10/2013 – 31/07/2017) | Taxila, Pakistan | <a href="https://web.uettaxila.edu.pk/">Website</a></p>
-</div>
+    <!-- Skills Section -->
+    <section id="skills" class="section-gray">
+        <div class="container">
+            <h2 class="section-title">Digital Skills</h2>
+            <div class="skills-container">
+                <div class="skill-tag">Natural Language Generation</div>
+                <div class="skill-tag">Data Augmentation</div>
+                <div class="skill-tag">Deep Learning</div>
+                <div class="skill-tag">Neural Networks</div>
+                <div class="skill-tag">Semantic Parsing</div>
+                <div class="skill-tag">Natural Language Understanding</div>
+                <div class="skill-tag">Data Extraction</div>
+                <div class="skill-tag">Data Preprocessing</div>
+                <div class="skill-tag">Data Visualization</div>
+                <div class="skill-tag">Data Cleaning</div>
+            </div>
+        </div>
+    </section>
 
-<h2>Work Experience</h2>
-<div class="work-experience">
-    <h3>PhD Scholar</h3>
-    <p>The University of Turin (01/11/2021 – 30/06/2024) | Turin, Italy</p>
-    <ul>
-        <li>Conducted Original Research</li>
-        <li>Developed and Evaluated Scientific Models</li>
-        <li>Collaborated on Diverse Research Projects</li>
-        <li>Mentored Junior Researchers</li>
-        <li>Engaged in Academic Networking</li>
-    </ul>
+    <!-- Research Section -->
+    <section id="research" class="section-white">
+        <div class="container">
+            <h2 class="section-title">Research & Publications</h2>
+            <div class="cards-grid">
+                <div class="card fade-in-up">
+                    <div class="card-header">
+                        <div class="card-icon">📄</div>
+                        <div>
+                            <h3>Current Research Project</h3>
+                            <div class="card-meta">Data Augmentation for DRS</div>
+                        </div>
+                    </div>
+                    <p>Developing novel approaches to augmenting formal meaning representation (DRS) with strategies for English semantic processing utilizing data augmentation for semantic parsing and text generation.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-header">
+                        <div class="card-icon">📚</div>
+                        <div>
+                            <h3>Recent Publication</h3>
+                            <div class="card-meta">2024 - IP&M Journal</div>
+                        </div>
+                    </div>
+                    <p>"Improving Semantic Parsing and Text Generation through Multi-Faceted Data Augmentation" - Submitted to Information Processing and Management Journal.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <h3>Lecturer</h3>
-    <p>University of Sialkot (05/11/2020 – 31/10/2021) | Sialkot, Pakistan</p>
-    <ul>
-        <li>Preparing and delivering lectures, tutorials, workshops, and seminars.</li>
-        <li>Developing curricula and course material.</li>
-        <li>Collaborating with other academics to improve teaching methods.</li>
-        <li>Setting and grading assignments and exams.</li>
-        <li>Conducting research and writing papers.</li>
-        <li>Participating in meetings and conferences.</li>
-        <li>Providing support to students and colleagues.</li>
-    </ul>
+    <!-- Contact Section -->
+    <section id="contact" class="section-gray">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
 
-    <h3>Lab Engineer</h3>
-    <p>The University of Lahore (15/02/2018 – 24/11/2020) | Lahore, Pakistan</p>
-    <ul>
-        <li>Designed and conducted labs as per departmental requirements.</li>
-        <li>Managed lab equipment and consumables.</li>
-        <li>Prepared and graded laboratory exams.</li>
-    </ul>
-</div>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Muhammad Saad Amin. All rights reserved.</p>
+        </div>
+    </footer>
 
-<h2>Digital Skills</h2>
-<div class="skills">
-    Natural Language Generation / Data Augmentation / Deep Learning / Neural Networks / Semantic Parsing / Natural Language Understanding / Data Extraction / Data Preprocessing / Data Visualization / Data Cleaning
-</div>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
 
-<h2>Projects</h2>
-<div class="projects">
-    <h3>A novel approach to augmenting formal meaning representation (DRS)</h3>
-    Developed strategies for English semantic processing utilizing data augmentation for semantic parsing and text generation.
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 2px 25px rgba(0, 0, 0, 0.15)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            }
+        });
 
-    <!-- Add more project details as needed -->
-    
-</div>
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-<h2>Publications</h2>
-<div class="publications">
-    <!-- List your publications here -->
-    <!-- Example publication -->
-    <ul>
-        <li>[2024] "Improving Semantic Parsing and Text Generation through Multi-Faceted Data Augmentation" submitted to Information Processing and Management (IP&M) Journal.</li>
-        <!-- Add more publications as needed -->
-    </ul>
-</div>
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
 
-<h2>References</h2>
-<div class="references">
-    <ul>
-        <li>Luca Anselma (Professor), Department of Computer Science, University of Turin, Italy - luca.anselma@unito.it (01/11/2021 – 31/10/2024)</li>
-        <!-- Add more references as needed -->
-    </ul>
-</div>
+        // Observe all cards and timeline items
+        document.querySelectorAll('.card, .timeline-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
 
-<h2>Language Skills</h2>
-<p><strong>Mother tongue(s): </strong> Urdu<br />
-Levels: A1 and A2: Basic user; B1 and B2: Independent user; C1 and C2: Proficient user
-</p>
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+            this.reset();
+        });
 
-<h2>Coursed Taught & Labs Conducted</h2>
+        // Mobile menu toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
 
-<ul><strong>Coursed Taught:</strong></ul><br />
-<ul style="list-style-type:none;">
-<li>- Operating System CS-2730 </li><br />
-<li>- Programming Fundamentals CS-1130 </li><br />
-<li>- Technology Management CS-1510 </li><br />
-<li>- Introduction to Algorithms CS-1150 </li><br />
-<li>- Introduction to Information & Communication Technologies CS-1110 </li><br />
-<li>- Labs Conducted:</li><br />
-<li>- Signals and Systems </li><br />
-<li>- Digital Logic Design </li><br />
-<li>- Digital Image Processing </li><br />
-<li>- Programming Fundamentals </li><br />
-<li>- Database Management System </li><br />
-<li>- Computer Communications and Networks </li><br />
-<li>- Electronic Devices and Circuits </li><br />
-<li>- Object Oriented Programming </li><br />
-<li>- Data and Communication Systems </li><br />
-<li></ul>
-
-
-<h2>Hobbies & Interests</h2>
-
-<ul style="list-style-type:none;">
-<li>- Cricket </li><br />
-<li>- Travelling </li><br />
-
-
-
-
-<footer style="margin-top: 40px;">
-<p>&copy; 2024 Muhammad Saad Amin. All rights reserved.</p></footer>
+        mobileMenu.addEventListener('click', function() {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+    </script>
+</body>
+</html>
 
