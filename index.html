@@ -136,8 +136,14 @@
 
         .hero p {
             font-size: 1.3rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
             opacity: 0.9;
+        }
+
+        .hero .contact-info {
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            opacity: 0.8;
         }
 
         .cta-button {
@@ -150,6 +156,7 @@
             font-weight: 600;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            margin: 0 10px;
         }
 
         .cta-button:hover {
@@ -194,7 +201,7 @@
         /* Cards */
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
@@ -249,6 +256,16 @@
             line-height: 1.6;
         }
 
+        .card ul {
+            margin-top: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        .card li {
+            color: #555;
+            margin-bottom: 0.5rem;
+        }
+
         /* Skills */
         .skills-container {
             display: grid;
@@ -274,7 +291,7 @@
         /* Timeline */
         .timeline {
             position: relative;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
@@ -324,6 +341,82 @@
             position: relative;
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Publications */
+        .publications-list {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .publication-item {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #667eea;
+        }
+
+        .publication-year {
+            display: inline-block;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .publication-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .publication-authors {
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .publication-venue {
+            color: #555;
+            font-style: italic;
+        }
+
+        /* Awards */
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .award-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .award-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .award-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #ffd700, #ff8c42);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
         }
 
         /* Contact */
@@ -450,6 +543,10 @@
             .timeline-item:nth-child(even)::after {
                 left: 21px;
             }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -463,8 +560,10 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#education">Education</a></li>
                 <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#publications">Publications</a></li>
                 <li><a href="#skills">Skills</a></li>
-                <li><a href="#research">Research</a></li>
+                <li><a href="#awards">Awards</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="mobile-menu">
@@ -479,9 +578,14 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>Muhammad Saad Amin</h1>
-            <p>Postdoctoral Researcher in Computer Science</p>
-            <p>Specializing in Natural Language Processing & Semantic Parsing</p>
+            <p>Postdoctoral Researcher in Computational Semantics</p>
+            <p>University of Turin, Italy</p>
+            <div class="contact-info">
+                <p>📧 saadamin2k13@gmail.com | 📱 (+39) 3478236537</p>
+                <p>📍 Via Puccini, 10154 Turin, Italy</p>
+            </div>
             <a href="#about" class="cta-button">Explore My Work</a>
+            <a href="https://scholar.google.com/saad" class="cta-button" target="_blank">Google Scholar</a>
         </div>
     </section>
 
@@ -494,31 +598,37 @@
                     <div class="card-header">
                         <div class="card-icon">🎓</div>
                         <div>
-                            <h3>Current Position</h3>
-                            <div class="card-meta">University of Turin</div>
+                            <h3>Current Research</h3>
+                            <div class="card-meta">Computational Semantics</div>
                         </div>
                     </div>
-                    <p>Postdoctoral Researcher focusing on improving generalization and robustness of language models through innovative semantic parsing techniques.</p>
+                    <p><strong>Hybrid Decision-Making:</strong> Leading research on Knowledge-enhanced Perspective-taking LLMs for Inclusive semantic modeling. My work focuses on developing LLM architectures that incorporate multiple perspectives in reasoning processes.</p>
+                    <ul>
+                        <li>Knowledge-enhanced Large Language Models</li>
+                        <li>Perspective-taking models</li>
+                        <li>Semantic Modeling & Hybrid decision making</li>
+                        <li>Inclusive Urban Policies</li>
+                    </ul>
                 </div>
                 <div class="card fade-in-up">
                     <div class="card-header">
                         <div class="card-icon">🔬</div>
                         <div>
-                            <h3>Research Focus</h3>
-                            <div class="card-meta">NLP & AI</div>
+                            <h3>Research Expertise</h3>
+                            <div class="card-meta">NLP & Semantic Processing</div>
                         </div>
                     </div>
-                    <p>Specializing in multi-lingual neural semantic parsing, text generation, and data augmentation for formal meaning representation.</p>
+                    <p>PhD in Computer Science with expertise in advancing multilingual DRS-based semantic parsing and generation, developing novel data augmentation techniques, and creating semantic resources for low-resource languages like Urdu.</p>
                 </div>
                 <div class="card fade-in-up">
                     <div class="card-header">
-                        <div class="card-icon">👨‍🏫</div>
+                        <div class="card-icon">🌍</div>
                         <div>
-                            <h3>Teaching Experience</h3>
-                            <div class="card-meta">Multiple Universities</div>
+                            <h3>International Experience</h3>
+                            <div class="card-meta">Italy & Netherlands</div>
                         </div>
                     </div>
-                    <p>Extensive experience in teaching computer science fundamentals, algorithms, and advanced programming concepts across various institutions.</p>
+                    <p>Erasmus+ Traineeship at University of Groningen where I developed the first semantic resource for Urdu (Urdu Meaning Bank - UMB) and implemented advanced augmentation approaches for semantic processing.</p>
                 </div>
             </div>
         </div>
@@ -527,27 +637,45 @@
     <!-- Education Section -->
     <section id="education" class="section-gray">
         <div class="container">
-            <h2 class="section-title">Education</h2>
+            <h2 class="section-title">Education & Training</h2>
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="timeline-content">
+                        <h3>Postdoctoral Researcher</h3>
+                        <div class="card-meta">University of Turin, Italy (07/2024 - Current)</div>
+                        <p><strong>Field:</strong> Computational Semantics</p>
+                        <p><strong>Focus:</strong> Hybrid Decision-Making with Knowledge-enhanced Perspective-taking LLMs for Inclusive semantic modeling</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
                         <h3>PhD in Computer Science</h3>
-                        <div class="card-meta">University of Turin, Italy (2021-2024)</div>
-                        <p><strong>Thesis:</strong> Improving Generalization and Robustness of Language Models with Multi-Faceted DRS Transformations in Multi-Lingual Neural Semantic Parsing and Text Generation</p>
+                        <div class="card-meta">University of Turin, Italy (11/2021 - 06/2024)</div>
+                        <p><strong>Thesis:</strong> Advancing Multilingual DRS-based Semantic Parsing and Generation: A Framework for Data Transformation, Robust Evaluation, and Task Reversibility</p>
+                        <p><strong>Research:</strong> Data augmentation, semantic processing, multilingual NLP, and development of semantic resources for low-resource languages</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Erasmus+ Traineeship</h3>
+                        <div class="card-meta">University of Groningen, Netherlands (09/2023 - 02/2024)</div>
+                        <p><strong>Project:</strong> Urdu Semantic Processing: Corpus Creation, Parsing and Generation</p>
+                        <p><strong>Achievement:</strong> Developed Urdu Meaning Bank (UMB), the first semantic resource for Urdu language</p>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <h3>Master of Science in Computer Engineering</h3>
-                        <div class="card-meta">University of Lahore, Pakistan (2018-2020)</div>
+                        <div class="card-meta">University of Lahore, Pakistan (09/2018 - 10/2020)</div>
+                        <p><strong>GPA:</strong> 3.83/4.00</p>
                         <p><strong>Thesis:</strong> Sign Language Recognition using Machine Learning</p>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-content">
                         <h3>Bachelor of Science in Computer Engineering</h3>
-                        <div class="card-meta">UET Taxila, Pakistan (2013-2017)</div>
-                        <p>Foundation in computer engineering principles and software development</p>
+                        <div class="card-meta">UET Taxila, Pakistan (10/2013 - 07/2017)</div>
+                        <p><strong>GPA:</strong> 3.53/4.00</p>
                     </div>
                 </div>
             </div>
@@ -557,191 +685,169 @@
     <!-- Experience Section -->
     <section id="experience" class="section-white">
         <div class="container">
-            <h2 class="section-title">Work Experience</h2>
+            <h2 class="section-title">Professional Experience</h2>
             <div class="cards-grid">
                 <div class="card fade-in-up">
                     <div class="card-header">
                         <div class="card-icon">🔬</div>
                         <div>
                             <h3>Postdoctoral Researcher</h3>
-                            <div class="card-meta">University of Turin (2024 - Current)</div>
+                            <div class="card-meta">University of Turin (07/2024 - Current)</div>
                         </div>
                     </div>
-                    <p>Leading advanced research in natural language processing and semantic parsing, developing innovative solutions for multi-lingual text generation.</p>
+                    <ul>
+                        <li>Lead research on perspective-taking capabilities in Large Language Models</li>
+                        <li>Design novel LLM architectures for multi-perspective reasoning</li>
+                        <li>Develop evaluation methodologies and specialized datasets</li>
+                        <li>Collaborate with interdisciplinary teams and mentor junior researchers</li>
+                        <li>Contribute to scholarly publications in high-impact venues</li>
+                    </ul>
                 </div>
                 <div class="card fade-in-up">
                     <div class="card-header">
                         <div class="card-icon">👨‍🎓</div>
                         <div>
                             <h3>PhD Scholar</h3>
-                            <div class="card-meta">University of Turin (2021-2024)</div>
+                            <div class="card-meta">University of Turin (11/2021 - 06/2024)</div>
                         </div>
                     </div>
-                    <p>Conducted original research, developed scientific models, collaborated on diverse projects, and mentored junior researchers.</p>
+                    <ul>
+                        <li>Conducted novel research in semantic processing</li>
+                        <li>Developed language models for parsing and generation tasks</li>
+                        <li>Created cross-task evaluation measures</li>
+                        <li>Developed reversible pipeline approaches for error analysis</li>
+                        <li>Mentored junior researchers and co-supervised projects</li>
+                    </ul>
                 </div>
                 <div class="card fade-in-up">
                     <div class="card-header">
                         <div class="card-icon">👨‍🏫</div>
                         <div>
                             <h3>Lecturer</h3>
-                            <div class="card-meta">University of Sialkot (2020-2021)</div>
+                            <div class="card-meta">University of Sialkot (11/2020 - 10/2021)</div>
                         </div>
                     </div>
-                    <p>Delivered lectures, developed curricula, conducted research, and provided comprehensive academic support to students.</p>
+                    <ul>
+                        <li>Delivered lectures, tutorials, workshops, and seminars</li>
+                        <li>Developed curricula and cross-platform course materials</li>
+                        <li>Collaborated with academics to improve teaching methods</li>
+                        <li>Conducted research and published academic papers</li>
+                        <li>Participated in conferences and academic networking</li>
+                    </ul>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-header">
+                        <div class="card-icon">⚙️</div>
+                        <div>
+                            <h3>Lab Engineer</h3>
+                            <div class="card-meta">University of Lahore (02/2018 - 11/2020)</div>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>Designed and conducted laboratory sessions</li>
+                        <li>Managed lab equipment and consumables inventory</li>
+                        <li>Prepared and graded laboratory examinations</li>
+                        <li>Selected and upgraded lab equipment as required</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="section-gray">
+    <!-- Projects Section -->
+    <section id="projects" class="section-gray">
         <div class="container">
-            <h2 class="section-title">Digital Skills</h2>
-            <div class="skills-container">
-                <div class="skill-tag">Natural Language Generation</div>
-                <div class="skill-tag">Data Augmentation</div>
-                <div class="skill-tag">Deep Learning</div>
-                <div class="skill-tag">Neural Networks</div>
-                <div class="skill-tag">Semantic Parsing</div>
-                <div class="skill-tag">Natural Language Understanding</div>
-                <div class="skill-tag">Data Extraction</div>
-                <div class="skill-tag">Data Preprocessing</div>
-                <div class="skill-tag">Data Visualization</div>
-                <div class="skill-tag">Data Cleaning</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Research Section -->
-    <section id="research" class="section-white">
-        <div class="container">
-            <h2 class="section-title">Research & Publications</h2>
+            <h2 class="section-title">Research Projects</h2>
             <div class="cards-grid">
                 <div class="card fade-in-up">
                     <div class="card-header">
-                        <div class="card-icon">📄</div>
+                        <div class="card-icon">🤖</div>
                         <div>
-                            <h3>Current Research Project</h3>
-                            <div class="card-meta">Data Augmentation for DRS</div>
+                            <h3>Perspective-taking LLMs for Inclusive Decision Making</h3>
                         </div>
                     </div>
-                    <p>Developing novel approaches to augmenting formal meaning representation (DRS) with strategies for English semantic processing utilizing data augmentation for semantic parsing and text generation.</p>
+                    <p>Leveraging Large Language Models to enhance social impact by improving decision-making processes, considering user information from various perspectives for more inclusive outcomes.</p>
                 </div>
                 <div class="card fade-in-up">
                     <div class="card-header">
-                        <div class="card-icon">📚</div>
+                        <div class="card-icon">📊</div>
                         <div>
-                            <h3>Recent Publication</h3>
-                            <div class="card-meta">2024 - IP&M Journal</div>
+                            <h3>Bidirectional Evaluation for DRS Systems</h3>
                         </div>
                     </div>
-                    <p>"Improving Semantic Parsing and Text Generation through Multi-Faceted Data Augmentation" - Submitted to Information Processing and Management Journal.</p>
+                    <p>Introduced Pars-Gen and Gen-Pars evaluation methodologies for comprehensive DRS-based system assessment, addressing limitations in traditional metrics for structural and linguistic fidelity.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-header">
+                        <div class="card-icon">🔄</div>
+                        <div>
+                            <h3>Task Reversibility in DRS Processing</h3>
+                        </div>
+                    </div>
+                    <p>Explored error propagation in reversible semantic parsing and text generation with DRS, developing innovative pipeline approaches for error correction from multilingual perspectives.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-header">
+                        <div class="card-icon">🌐</div>
+                        <div>
+                            <h3>Multi-Faceted Data Augmentation</h3>
+                        </div>
+                    </div>
+                    <p>Developed novel approaches for augmenting formal meaning representation through Named Entity, Lexical, and Grammatical augmentation strategies for English, Italian, and Urdu.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-header">
+                        <div class="card-icon">🇵🇰</div>
+                        <div>
+                            <h3>Urdu Semantic Processing</h3>
+                        </div>
+                    </div>
+                    <p>Created the first Semantic Resource for Urdu (Urdu Meaning Bank - UMB) and implemented neural semantic parsing and generation tasks with data augmentation for this low-resource language.</p>
+                </div>
+                <div class="card fade-in-up">
+                    <div class="card-header">
+                        <div class="card-icon">🤲</div>
+                        <div>
+                            <h3>Sign Language Recognition</h3>
+                        </div>
+                    </div>
+                    <p>Developed smart sensor-based data glove prototype for capturing alphabetical and numerical sign postures, generating datasets and utilizing neural networks for static sign gesture classification.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section-gray">
+    <!-- Publications Section -->
+    <section id="publications" class="section-white">
         <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-form">
-                <form>
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <input type="text" id="subject" name="subject" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">Send Message</button>
-                </form>
-            </div>
-        </div>
-    </section>
+            <h2 class="section-title">Publications</h2>
+            <div class="publications-list">
+                <div class="publication-item">
+                    <span class="publication-year">2025</span>
+                    <div class="publication-title">Evaluating Structural and Linguistic Quality in Urdu DRS Parsing and Generation through Bidirectional Evaluation</div>
+                    <div class="publication-authors">Muhammad Saad Amin, Luca Anselma, Alessandro Mazzei</div>
+                    <div class="publication-venue">Accepted at IndoNLP Workshop, COLING 2025</div>
+                </div>
+                
+                <div class="publication-item">
+                    <span class="publication-year">2025</span>
+                    <div class="publication-title">Exploiting Task Reversibility of DRS Parsing and Generation: Challenges and Insights from Multi-lingual Perspective</div>
+                    <div class="publication-authors">Muhammad Saad Amin, Luca Anselma, Alessandro Mazzei</div>
+                    <div class="publication-venue">Accepted at First Workshop on Language Models for Low-Resource Languages, COLING 2025</div>
+                </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Muhammad Saad Amin. All rights reserved.</p>
-        </div>
-    </footer>
+                <div class="publication-item">
+                    <span class="publication-year">2024</span>
+                    <div class="publication-title">Improving Semantic Parsing and Text Generation through Multi-Faceted Data Augmentation</div>
+                    <div class="publication-authors">Muhammad Saad Amin, Luca Anselma, Alessandro Mazzei</div>
+                    <div class="publication-venue">Submitted to IEEE Access</div>
+                </div>
 
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetSection = document.querySelector(targetId);
-                if (targetSection) {
-                    targetSection.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+                <div class="publication-item">
+                    <span class="publication-year">2024</span>
+                    <div class="publication-title">Semantic Processing for Urdu: Corpus Creation, Parsing, and Generation</div>
+                    <div class="publication-authors">Muhammad Saad Amin, Xiao Zhang, Luca Anselma, Alessandro Mazzei, Johan Bos</div>
+                    <div class="publication-venue">Submitted to Language Resources and Evaluation</div>
+                </div>
 
-        // Header scroll effect
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
-                header.style.boxShadow = '0 2px 25px rgba(0, 0, 0, 0.15)';
-            } else {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-            }
-        });
-
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe all cards and timeline items
-        document.querySelectorAll('.card, .timeline-item').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
-        });
-
-        // Form submission
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message! I will get back to you soon.');
-            this.reset();
-        });
-
-        // Mobile menu toggle
-        const mobileMenu = document.querySelector('.mobile-menu');
-        const navLinks = document.querySelector('.nav-links');
-
-        mobileMenu.addEventListener('click', function() {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-        });
-    </script>
-</body>
-</html>
-
+                <div class="
